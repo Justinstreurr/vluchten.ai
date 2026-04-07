@@ -28,7 +28,7 @@ export default function GuaranteeBadges() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {badges.map((b) => (
             <div key={b.title} className="flex gap-4 items-start">
-              <div className="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center text-2xl shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-2xl shrink-0">
                 {b.icon}
               </div>
               <div>

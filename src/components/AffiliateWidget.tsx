@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 interface AffiliateWidgetProps {
   destinationCity: string
   destinationIata: string
@@ -19,10 +21,6 @@ function bookingUrl(dest: string) {
   return `https://www.booking.com/flights/index.html?type=ONEWAY&from=AMS&to=${dest}&utm_source=vluchten_ai&utm_medium=affiliate`
 }
 
-function travelpayoutsUrl(origin: string, dest: string) {
-  return `https://tp.media/r?marker=${AFFILIATE_MARKER}&p=4114&u=${encodeURIComponent(skyscannerUrl(origin, dest))}`
-}
-
 export default function AffiliateWidget({
   destinationCity,
   destinationIata,
@@ -32,10 +30,10 @@ export default function AffiliateWidget({
   const partners = [
     {
       name: "Skyscanner",
-      logo: "🔵",
+      logo: "/logo-skyscanner-icon.png",
       tagline: "Vergelijk honderden maatschappijen",
       badge: "Meest populair",
-      badgeColor: "bg-green-100 text-green-700",
+      badgeColor: "bg-[#F58A07]/10 text-[#F58A07] border border-[#F58A07]/25",
       url: skyscannerUrl(originIata, destinationIata),
       priceNote: avgPrice ? `v.a. €${avgPrice}` : "Bekijk prijzen",
       cta: "Bekijk vluchten →",
@@ -43,7 +41,7 @@ export default function AffiliateWidget({
     },
     {
       name: "Kiwi.com",
-      logo: "🟢",
+      logo: "/logo-kiwi-icon.png",
       tagline: "Slimme combinaties, lage prijzen",
       badge: "Beste deals",
       badgeColor: "bg-blue-100 text-blue-700",
@@ -54,10 +52,10 @@ export default function AffiliateWidget({
     },
     {
       name: "Booking.com",
-      logo: "🔷",
+      logo: "/logo-booking-icon.png",
       tagline: "Boek vluchten + hotel tegelijk",
       badge: "Pakketdeals",
-      badgeColor: "bg-purple-100 text-purple-700",
+      badgeColor: "bg-blue-100 text-[#03306B]",
       url: bookingUrl(destinationIata),
       priceNote: "Combineer en bespaar",
       cta: "Bekijk vluchten →",
@@ -83,13 +81,13 @@ export default function AffiliateWidget({
             href={p.url}
             target="_blank"
             rel="noopener noreferrer sponsored"
-            className={`flex items-center justify-between px-6 py-5 hover:bg-violet-50 transition-colors group ${
-              p.highlight ? "bg-violet-50/50" : ""
+            className={`flex items-center justify-between px-6 py-5 hover:bg-blue-50 transition-colors group ${
+              p.highlight ? "bg-blue-50/50" : ""
             }`}
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-2xl shrink-0">
-                {p.logo}
+              <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 p-2">
+                <Image src={p.logo} alt={p.name} width={40} height={40} className="w-full h-full object-contain" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -104,10 +102,10 @@ export default function AffiliateWidget({
 
             <div className="flex items-center gap-4 shrink-0">
               <div className="text-right hidden sm:block">
-                <div className="font-extrabold text-violet-700 text-lg">{p.priceNote}</div>
+                <div className="font-extrabold text-[#03306B] text-lg">{p.priceNote}</div>
                 <div className="text-xs text-slate-400">per persoon</div>
               </div>
-              <span className="text-violet-600 font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">
+              <span className="text-[#05428C] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">
                 {p.cta}
               </span>
             </div>

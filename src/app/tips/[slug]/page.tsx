@@ -15,7 +15,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const tip = getTip(slug)
   if (!tip) return {}
-
   return {
     title: tip.title,
     description: tip.description,
@@ -36,61 +35,54 @@ export default async function TipPage({ params }: Props) {
     headline: tip.title,
     description: tip.description,
     datePublished: tip.date,
-    publisher: {
-      "@type": "Organization",
-      name: "Vluchten.ai",
-    },
+    publisher: { "@type": "Organization", name: "Vluchten.ai" },
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-100">
+      <div className="bg-white border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-2 text-sm text-slate-500">
-          <Link href="/" className="hover:text-violet-600">Home</Link>
+          <Link href="/" className="hover:text-slate-700">Home</Link>
           <span>/</span>
-          <Link href="/tips" className="hover:text-violet-600">Tips</Link>
+          <Link href="/tips" className="hover:text-slate-700">Tips</Link>
           <span>/</span>
           <span className="text-slate-900 font-medium">{tip.title}</span>
         </div>
       </div>
 
-      {/* Header */}
-      <div className="bg-gradient-to-br from-slate-900 via-violet-950 to-slate-900 text-white py-14 px-4">
+      {/* Hero */}
+      <section className="bg-[#05428C] pt-8 pb-10 px-4">
         <div className="max-w-3xl mx-auto">
-          <div className="text-violet-300 text-sm font-semibold uppercase tracking-wide mb-3">{tip.category}</div>
-          <div className="text-5xl mb-4">{tip.emoji}</div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight mb-4">{tip.title}</h1>
-          <p className="text-slate-300 text-lg">{tip.description}</p>
-          <div className="flex items-center gap-4 mt-5 text-sm text-slate-400">
-            <span>📅 {new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
-            <span>·</span>
-            <span>⏱ {tip.readTime} min lezen</span>
+          <div className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-3">{tip.category}</div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-3">{tip.title}</h1>
+          <p className="text-white/60 text-sm">{tip.description}</p>
+          <div className="flex items-center gap-4 mt-4 text-xs text-white/40">
+            <span>{new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
+            <span>&middot;</span>
+            <span>{tip.readTime} min lezen</span>
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-3xl mx-auto px-4 py-12">
-        {/* Article content */}
+        {/* Article */}
         <div
-          className="prose prose-slate max-w-none bg-white rounded-2xl border border-slate-200 p-8"
+          className="prose prose-slate max-w-none bg-white rounded-lg border border-slate-200 p-8"
           dangerouslySetInnerHTML={{ __html: renderMarkdown(tip.content) }}
         />
 
         {/* CTA */}
-        <div className="mt-8 bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl p-8 text-center text-white">
+        <div className="mt-8 bg-slate-800 rounded-lg p-8 text-center text-white">
           <h2 className="text-xl font-bold mb-2">Klaar om te vliegen?</h2>
-          <p className="text-violet-200 mb-6">Vergelijk nu vluchten en bespaar direct.</p>
+          <p className="text-slate-400 text-sm mb-6">Vergelijk nu vluchten en bespaar direct.</p>
           <Link
             href="/goedkope-vluchten"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-violet-700 font-bold rounded-xl hover:bg-violet-50 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#05428C] text-white font-semibold rounded hover:bg-[#03306B] transition-colors"
           >
-            🔍 Zoek goedkope vluchten
+            Zoek goedkope vluchten
           </Link>
         </div>
 
@@ -102,10 +94,10 @@ export default async function TipPage({ params }: Props) {
               <Link
                 key={t.slug}
                 href={`/tips/${t.slug}`}
-                className="bg-white rounded-xl border border-slate-200 p-5 hover:border-violet-300 transition-all group"
+                className="group bg-white rounded-lg border border-slate-200 p-5 hover:border-slate-300 transition-all"
               >
-                <div className="text-2xl mb-2">{t.emoji}</div>
-                <div className="font-semibold text-slate-900 text-sm group-hover:text-violet-700 transition-colors leading-snug">
+                <div className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-2">{t.category}</div>
+                <div className="font-semibold text-slate-900 text-sm group-hover:text-slate-700 transition-colors leading-snug">
                   {t.title}
                 </div>
               </Link>
@@ -117,7 +109,6 @@ export default async function TipPage({ params }: Props) {
   )
 }
 
-// Simple markdown-to-HTML converter (no external deps)
 function renderMarkdown(md: string): string {
   return md
     .trim()

@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!dest) return {}
 
   const title = `Vluchten naar ${dest.city} — Goedkope tickets v.a. €${dest.avgPrice}`
-  const description = `Vergelijk vluchten naar ${dest.city}, ${dest.country}. Vind de goedkoopste tickets v.a. €${dest.avgPrice} via Skyscanner, Kiwi.com en meer. Vliegtijd: ${dest.flightTimeHours}u${dest.flightTimeMin > 0 ? ` ${dest.flightTimeMin}m` : ""}.`
+  const description = `Vergelijk vluchten naar ${dest.city}, ${dest.country}. Vind de goedkoopste tickets v.a. €${dest.avgPrice} via Skyscanner, Kiwi.com en meer.`
 
   return {
     title,
@@ -31,12 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `vluchten naar ${dest.city.toLowerCase()}`,
       `goedkope vluchten ${dest.city.toLowerCase()}`,
       `vliegtickets ${dest.city.toLowerCase()}`,
-      `vluchten van amsterdam naar ${dest.city.toLowerCase()}`,
     ],
-    openGraph: {
-      title,
-      description,
-    },
+    openGraph: { title, description },
   }
 }
 
@@ -60,11 +56,11 @@ export default async function DestinationPage({ params }: Props) {
     },
     {
       q: `Welke luchtvaartmaatschappijen vliegen op ${dest.city}?`,
-      a: `Vanuit Nederland vliegen onder andere ${dest.airlines.join(", ")} op ${dest.city}. De beschikbaarheid kan variëren per seizoen.`,
+      a: `Vanuit Nederland vliegen onder andere ${dest.airlines.join(", ")} op ${dest.city}.`,
     },
     {
       q: `Wanneer is de beste tijd om naar ${dest.city} te vliegen?`,
-      a: `De beste maanden om naar ${dest.city} te reizen zijn ${dest.bestMonths.join(", ")}. In deze periode is het weer aangenaam en zijn de vliegprijzen vaak lager dan in het hoogseizoen.`,
+      a: `De beste maanden om naar ${dest.city} te reizen zijn ${dest.bestMonths.join(", ")}.`,
     },
   ]
 
@@ -74,73 +70,54 @@ export default async function DestinationPage({ params }: Props) {
     mainEntity: faqItems.map((item) => ({
       "@type": "Question",
       name: item.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.a,
-      },
+      acceptedAnswer: { "@type": "Answer", text: item.a },
     })),
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-slate-100">
+      <div className="bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-2 text-sm text-slate-500">
-          <Link href="/" className="hover:text-violet-600">Home</Link>
+          <Link href="/" className="hover:text-slate-700">Home</Link>
           <span>/</span>
-          <Link href="/goedkope-vluchten" className="hover:text-violet-600">Vluchten</Link>
+          <Link href="/goedkope-vluchten" className="hover:text-slate-700">Vluchten</Link>
           <span>/</span>
           <span className="text-slate-900 font-medium">{dest.city}</span>
         </div>
       </div>
 
-      {/* Hero with real photo */}
+      {/* Hero with photo */}
       <div className="relative text-white py-16 px-4 overflow-hidden min-h-64">
-        <Image
-          src={dest.photo}
-          alt={dest.city}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#05203c]/90 via-[#05203c]/70 to-transparent" />
+        <Image src={dest.photo} alt={dest.city} fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-transparent" />
 
         <div className="relative max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-5xl drop-shadow-lg">{dest.emoji}</span>
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold drop-shadow">
-                Vluchten naar {dest.city}
-              </h1>
-              <p className="text-white/70 mt-1">{dest.country} · {dest.iata}</p>
-            </div>
-          </div>
-          <p className="text-white/75 mt-3 mb-6 max-w-2xl text-lg">{dest.description}</p>
+          <h1 className="text-3xl sm:text-4xl font-bold drop-shadow mb-2">
+            Vluchten naar {dest.city}
+          </h1>
+          <p className="text-white/60 mt-1 mb-4">{dest.country} &middot; {dest.iata}</p>
+          <p className="text-white/70 mb-6 max-w-2xl text-base">{dest.description}</p>
 
-          <div className="flex flex-wrap gap-4 mb-8">
-            <div className="bg-white/10 rounded-xl px-4 py-3 backdrop-blur-sm">
-              <div className="text-xs text-slate-400 uppercase tracking-wide">Vanaf</div>
-              <div className="text-2xl font-extrabold text-white">€{dest.avgPrice}</div>
-              <div className="text-xs text-slate-400">per persoon</div>
+          <div className="flex flex-wrap gap-3">
+            <div className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3">
+              <div className="text-xs text-white/50 uppercase tracking-wide">Vanaf</div>
+              <div className="text-2xl font-bold text-white">&euro;{dest.avgPrice}</div>
+              <div className="text-xs text-white/50">per persoon</div>
             </div>
-            <div className="bg-white/10 rounded-xl px-4 py-3 backdrop-blur-sm">
-              <div className="text-xs text-slate-400 uppercase tracking-wide">Vliegtijd</div>
-              <div className="text-2xl font-extrabold text-white">
+            <div className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3">
+              <div className="text-xs text-white/50 uppercase tracking-wide">Vliegtijd</div>
+              <div className="text-2xl font-bold text-white">
                 {dest.flightTimeHours}u{dest.flightTimeMin > 0 ? `${dest.flightTimeMin}m` : ""}
               </div>
-              <div className="text-xs text-slate-400">vanuit AMS</div>
+              <div className="text-xs text-white/50">vanuit AMS</div>
             </div>
-            <div className="bg-white/10 rounded-xl px-4 py-3 backdrop-blur-sm">
-              <div className="text-xs text-slate-400 uppercase tracking-wide">Beste maanden</div>
+            <div className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3">
+              <div className="text-xs text-white/50 uppercase tracking-wide">Beste maanden</div>
               <div className="text-base font-bold text-white capitalize">{dest.bestMonths.slice(0, 2).join(", ")}</div>
-              <div className="text-xs text-slate-400">&amp; meer</div>
+              <div className="text-xs text-white/50">&amp; meer</div>
             </div>
           </div>
         </div>
@@ -149,46 +126,38 @@ export default async function DestinationPage({ params }: Props) {
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6">
             {/* Search */}
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-4">Zoek vluchten naar {dest.city}</h2>
-              <SearchWidget
-                defaultDestination={dest.city}
-                defaultDestinationCode={dest.iata}
-                compact
-              />
+              <SearchWidget defaultDestination={dest.city} defaultDestinationCode={dest.iata} compact />
             </div>
 
             {/* Affiliate comparison */}
-            <AffiliateWidget
-              destinationCity={dest.city}
-              destinationIata={dest.iata}
-              avgPrice={dest.avgPrice}
-            />
+            <AffiliateWidget destinationCity={dest.city} destinationIata={dest.iata} avgPrice={dest.avgPrice} />
 
-            {/* About destination */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+            {/* About */}
+            <div className="bg-white rounded-lg border border-slate-200 p-6">
               <h2 className="font-bold text-xl text-slate-900 mb-3">Over {dest.city}</h2>
               <p className="text-slate-600 leading-relaxed">{dest.longDescription}</p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-2">✈ Airlines</h3>
+                  <h3 className="font-semibold text-slate-900 mb-3">Luchtvaartmaatschappijen</h3>
                   <ul className="space-y-1.5">
                     {dest.airlines.map((a) => (
                       <li key={a} className="text-sm text-slate-600 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-violet-400 inline-block" />
+                        <span className="w-1 h-1 rounded-full bg-slate-400 inline-block shrink-0" />
                         {a}
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 mb-2">📅 Beste reismaanden</h3>
+                  <h3 className="font-semibold text-slate-900 mb-3">Beste reismaanden</h3>
                   <div className="flex flex-wrap gap-2">
                     {dest.bestMonths.map((m) => (
-                      <span key={m} className="px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-xs font-semibold capitalize">
+                      <span key={m} className="px-3 py-1 bg-slate-100 text-slate-600 rounded text-xs font-semibold capitalize">
                         {m}
                       </span>
                     ))}
@@ -201,12 +170,12 @@ export default async function DestinationPage({ params }: Props) {
             <PriceChart avgPrice={dest.avgPrice} city={dest.city} />
 
             {/* Tips */}
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
-              <h2 className="font-bold text-lg text-amber-900 mb-4">💡 Tips voor vluchten naar {dest.city}</h2>
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
+              <h2 className="font-bold text-lg text-slate-900 mb-4">Tips voor vluchten naar {dest.city}</h2>
               <ul className="space-y-3">
                 {dest.tips.map((tip, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-amber-800">
-                    <span className="mt-0.5 w-5 h-5 rounded-full bg-amber-200 text-amber-800 font-bold flex items-center justify-center text-xs shrink-0">
+                  <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-slate-200 text-slate-600 font-bold flex items-center justify-center text-xs shrink-0">
                       {i + 1}
                     </span>
                     {tip}
@@ -216,7 +185,7 @@ export default async function DestinationPage({ params }: Props) {
             </div>
 
             {/* FAQ */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-6">
+            <div className="bg-white rounded-lg border border-slate-200 p-6">
               <h2 className="font-bold text-xl text-slate-900 mb-6">Veelgestelde vragen</h2>
               <div className="space-y-5">
                 {faqItems.map((item, i) => (
@@ -232,24 +201,24 @@ export default async function DestinationPage({ params }: Props) {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Popular routes */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-5">
+            <div className="bg-white rounded-lg border border-slate-200 p-5">
               <h3 className="font-bold text-slate-900 mb-4">Vluchten naar {dest.city}</h3>
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {dest.popularRoutes.map((route) => (
                   <a
                     key={route.fromIata}
                     href={`https://www.skyscanner.nl/transport/vluchten/${route.fromIata.toLowerCase()}/${dest.iata.toLowerCase()}/?utm_source=vluchten_ai&utm_medium=affiliate`}
                     target="_blank"
                     rel="noopener noreferrer sponsored"
-                    className="flex items-center justify-between p-3 rounded-xl hover:bg-violet-50 border border-slate-100 hover:border-violet-200 transition-all group"
+                    className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 border border-slate-100 hover:border-slate-200 transition-all group"
                   >
                     <div className="text-sm">
-                      <div className="font-semibold text-slate-900">{route.from} → {dest.city}</div>
-                      <div className="text-slate-500 text-xs">{route.fromIata} → {dest.iata}</div>
+                      <div className="font-semibold text-slate-900">{route.from} &rarr; {dest.city}</div>
+                      <div className="text-slate-400 text-xs">{route.fromIata} &rarr; {dest.iata}</div>
                     </div>
                     <div className="text-right">
-                      <div className="font-extrabold text-violet-700">€{route.price}</div>
-                      <div className="text-xs text-slate-400 group-hover:text-violet-600">Bekijk →</div>
+                      <div className="font-bold text-slate-900">&euro;{route.price}</div>
+                      <div className="text-xs text-slate-400 group-hover:text-slate-600">Bekijk</div>
                     </div>
                   </a>
                 ))}

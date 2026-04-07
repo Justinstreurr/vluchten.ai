@@ -38,7 +38,7 @@ export default function PriceChart({ avgPrice, city }: PriceChartProps) {
                   background: isCheap
                     ? "linear-gradient(to top, #16a34a, #4ade80)"
                     : isCurrent
-                    ? "linear-gradient(to top, #7c3aed, #a78bfa)"
+                    ? "linear-gradient(to top, #05428C, #60a5fa)"
                     : "linear-gradient(to top, #e2e8f0, #f1f5f9)",
                 }}
               >
@@ -46,7 +46,7 @@ export default function PriceChart({ avgPrice, city }: PriceChartProps) {
                   €{price}
                 </div>
               </div>
-              <span className={`text-xs ${isCurrent ? "font-bold text-violet-600" : "text-slate-400"}`}>
+              <span className={`text-xs ${isCurrent ? "font-bold text-[#05428C]" : "text-slate-400"}`}>
                 {MONTHS_SHORT[i]}
               </span>
             </div>
@@ -59,7 +59,7 @@ export default function PriceChart({ avgPrice, city }: PriceChartProps) {
           <span className="w-3 h-3 rounded-sm bg-green-500 inline-block" /> Goedkoopste maand
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-sm bg-violet-600 inline-block" /> Huidige maand
+          <span className="w-3 h-3 rounded-sm bg-[#05428C] inline-block" /> Huidige maand
         </span>
       </div>
     </div>

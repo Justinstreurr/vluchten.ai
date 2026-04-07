@@ -11,40 +11,39 @@ export const metadata: Metadata = {
 export default function TipsPage() {
   return (
     <>
-      <div className="bg-gradient-to-br from-slate-900 via-violet-950 to-slate-900 text-white py-14 px-4">
+      <section className="bg-[#05428C] pt-8 pb-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold mb-4">Reisgidsen & Tips</h1>
-          <p className="text-slate-300 text-lg">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-2">Reisgidsen &amp; Tips</h1>
+          <p className="text-sm text-white/60">
             Alles wat je moet weten om slim en goedkoop te vliegen.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-5xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="max-w-5xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {tips.map((tip) => (
             <Link
               key={tip.slug}
               href={`/tips/${tip.slug}`}
-              className="bg-white rounded-2xl border border-slate-200 p-6 hover:border-violet-300 hover:shadow-md transition-all group"
+              className="group bg-white rounded-lg border border-slate-200 p-6 hover:border-slate-300 hover:shadow-md transition-all"
             >
-              <div className="text-4xl mb-4">{tip.emoji}</div>
-              <div className="text-xs font-semibold text-violet-600 uppercase tracking-wide mb-1">
+              <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
                 {tip.category}
               </div>
-              <h2 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-violet-700 transition-colors leading-snug">
+              <h2 className="font-bold text-slate-900 text-lg mb-2 group-hover:text-slate-700 transition-colors leading-snug">
                 {tip.title}
               </h2>
               <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">{tip.description}</p>
               <div className="flex items-center gap-3 mt-4 text-xs text-slate-400">
-                <span>📅 {new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
-                <span>·</span>
-                <span>⏱ {tip.readTime} min lezen</span>
+                <span>{new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
+                <span>&middot;</span>
+                <span>{tip.readTime} min lezen</span>
               </div>
             </Link>
           ))}
         </div>
-      </div>
+      </section>
     </>
   )
 }

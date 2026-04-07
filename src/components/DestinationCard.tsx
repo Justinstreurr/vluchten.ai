@@ -2,80 +2,68 @@ import Link from "next/link"
 import Image from "next/image"
 import { Destination } from "@/data/destinations"
 
-interface DestinationCardProps {
+interface Props {
   destination: Destination
-  showPrice?: boolean
 }
 
-export default function DestinationCard({ destination: d, showPrice = true }: DestinationCardProps) {
+export default function DestinationCard({ destination: d }: Props) {
   const trendDown = d.priceTrend < 0
   const trendAbs = Math.abs(d.priceTrend)
 
   return (
-    <Link
-      href={`/vluchten-naar/${d.slug}`}
-      className="group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white"
-    >
+    <Link href={`/vluchten-naar/${d.slug}`}
+      className="group block rounded-lg overflow-hidden bg-white border border-slate-200 hover:shadow-lg hover:border-slate-300 transition-all duration-200">
+
       {/* Photo */}
-      <div className="relative h-40 overflow-hidden bg-slate-200">
+      <div className="relative h-44 overflow-hidden bg-slate-100">
         <Image
           src={d.photo}
           alt={`Vluchten naar ${d.city}`}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
 
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-        {/* Badges top-left */}
-        <div className="absolute top-2.5 left-2.5 flex gap-1.5">
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex gap-1.5">
           {d.deal && (
-            <span className="text-xs font-bold bg-rose-500 text-white px-2 py-0.5 rounded-full shadow">
+            <span className="text-[10px] font-semibold bg-rose-500 text-white px-2 py-0.5 rounded tracking-wide">
               Deal
             </span>
           )}
           {d.trending && (
-            <span className="text-xs font-bold bg-amber-400 text-amber-900 px-2 py-0.5 rounded-full shadow">
-              🔥 Trending
+            <span className="text-[10px] font-semibold bg-[#F58A07] text-white px-2 py-0.5 rounded tracking-wide">
+              Populair
             </span>
           )}
         </div>
 
-        {/* Price trend badge top-right */}
+        {/* Price trend */}
         {d.priceTrend !== 0 && (
-          <span className={`absolute top-2.5 right-2.5 text-xs font-bold px-2 py-0.5 rounded-full shadow ${
-            trendDown
-              ? "bg-green-500 text-white"
-              : "bg-orange-100 text-orange-700"
+          <span className={`absolute top-3 right-3 text-[10px] font-semibold px-2 py-0.5 rounded ${
+            trendDown ? "bg-emerald-500 text-white" : "bg-orange-100 text-orange-700"
           }`}>
-            {trendDown ? `↓ ${trendAbs}%` : `↑ ${trendAbs}%`}
+            {trendDown ? `-${trendAbs}%` : `+${trendAbs}%`}
           </span>
         )}
 
-        {/* City name bottom-left */}
-        <div className="absolute bottom-0 left-0 right-0 px-3 pb-2.5">
-          <div className="text-white font-bold text-base drop-shadow">{d.city}</div>
-          <div className="text-white/75 text-xs">{d.country}</div>
+        {/* City over photo */}
+        <div className="absolute bottom-0 left-0 right-0 px-3.5 pb-3">
+          <div className="text-white font-semibold text-base leading-tight">{d.city}</div>
+          <div className="text-white/70 text-xs">{d.country}</div>
         </div>
       </div>
 
-      {/* Info row */}
-      <div className="px-3.5 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-1 text-xs text-slate-400">
-          <span>✈</span>
-          <span>
-            {d.flightTimeHours}u{d.flightTimeMin > 0 ? `${d.flightTimeMin}m` : ""}
-          </span>
+      {/* Footer row */}
+      <div className="px-3.5 py-3 flex items-center justify-between bg-white">
+        <div className="text-xs text-slate-400">
+          {d.flightTimeHours}u{d.flightTimeMin > 0 ? `\u202F${d.flightTimeMin}m` : ""} vlucht
         </div>
-
-        {showPrice && (
-          <div className="text-right">
-            <span className="text-[10px] text-slate-400">v.a. </span>
-            <span className="font-extrabold text-violet-700 text-base">€{d.avgPrice}</span>
-          </div>
-        )}
+        <div>
+          <span className="text-[10px] text-slate-400">v.a. </span>
+          <span className="font-bold text-slate-900">&euro;{d.avgPrice}</span>
+        </div>
       </div>
     </Link>
   )
