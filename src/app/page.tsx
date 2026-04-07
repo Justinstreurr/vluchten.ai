@@ -10,34 +10,35 @@ import { tips } from "@/data/tips"
 import { months } from "@/data/months"
 
 export const metadata: Metadata = {
-  title: "Vluchten.ai — Vergelijk goedkope vliegtickets",
-  description: "Vind de laagste prijs voor vliegtickets via Skyscanner, Kiwi.com, Booking.com en meer. Gratis vergelijken, direct boeken.",
+  title: "Vluchten.ai — Slim vliegen begint hier",
+  description:
+    "Ontdek wanneer je moet boeken, vanwaar je het goedkoopst vertrekt en welke aanbieder nu de laagste prijs heeft. Nederlandstalige reisgids voor slimme vliegers. 100% gratis.",
 }
 
 const faqItems = [
   {
-    q: "Hoe vind ik de goedkoopste vlucht?",
-    a: "Boek op dinsdag of woensdag, minstens 6–8 weken van tevoren. Vermijd schoolvakanties en boek een retourvlucht in plaats van twee enkele vluchten. Vluchten.ai vergelijkt automatisch honderden maatschappijen zodat je altijd de laagste prijs ziet.",
+    q: "Wanneer is het goedkoopst om een vlucht te boeken?",
+    a: "Voor Europese bestemmingen boek je het beste 4–8 weken van tevoren. Voor intercontinentale vluchten is 2–4 maanden vooruit ideaal. Vlieg je op dinsdag of woensdag? Dan betaal je gemiddeld €30–50 minder dan in het weekend.",
   },
   {
-    q: "Is vluchten.ai gratis te gebruiken?",
-    a: "Ja, vluchten.ai is 100% gratis. Je betaalt nooit iets voor het vergelijken van vluchten. Wanneer je doorklikt naar een aanbieder zoals Skyscanner of Kiwi.com, betaal je alleen de prijs van het ticket.",
+    q: "Is vluchten.ai gratis?",
+    a: "Ja, vluchten.ai is volledig gratis. Je betaalt nooit iets voor onze reisgidsen of het vergelijken van vluchten. Wanneer je via onze links boekt bij Skyscanner, Kiwi.com of Booking.com, ontvangen wij soms een kleine commissie van de aanbieder — jij betaalt daar niets extra voor.",
   },
   {
-    q: "Wanneer is het het goedkoopst om te vliegen?",
-    a: "Doordeweekse vluchten (dinsdag, woensdag) zijn gemiddeld 15–20% goedkoper dan weekendvluchten. Vroege ochtend- en late avondvluchten zijn vaak voordeliger. In het laagseizoen (najaar en winter, buiten feestdagen) zijn tickets gemiddeld 30% goedkoper.",
+    q: "Welke aanbieders vergelijkt vluchten.ai?",
+    a: "Wij vergelijken via Skyscanner, Kiwi.com en Booking.com. Je wordt altijd doorgestuurd naar de officiële website van de aanbieder om te boeken. Wij slaan geen betalingsgegevens op.",
   },
   {
-    q: "Welke vluchtzoekers vergelijkt vluchten.ai?",
-    a: "Vluchten.ai vergelijkt via Skyscanner, Kiwi.com en Booking.com — drie van de grootste en meest betrouwbare vluchtzoekers ter wereld. Je wordt altijd doorgestuurd naar de officiële website van de aanbieder om te boeken.",
+    q: "Vanwaar is het goedkoopst vliegen vanuit Nederland?",
+    a: "Amsterdam Schiphol heeft de meeste verbindingen en vaak de scherpste prijzen door de concurrentie. Eindhoven Airport is voor sommige Europese bestemmingen goedkoper via Ryanair. Rotterdam The Hague Airport heeft beperkt aanbod maar kan interessant zijn voor vakantievluchten.",
   },
   {
-    q: "Hoe lang van tevoren moet ik een vlucht boeken?",
-    a: "Voor Europese bestemmingen is 4–8 weken van tevoren ideaal. Voor intercontinentale vluchten (VS, Azië) boek je het beste 3–6 maanden van tevoren. Last-minute tickets kunnen soms goedkoper zijn, maar dat is een gok.",
+    q: "Hoe weet ik of ik een goede prijs heb?",
+    a: "Vergelijk altijd minimaal drie aanbieders. Een goede vuistregel: als de prijs meer dan 20% lager is dan het gemiddelde van de afgelopen weken, is het een echte deal. Onze reisgidsen per bestemming geven je een richtprijs per maand.",
   },
   {
-    q: "Zijn de prijzen op vluchten.ai actueel?",
-    a: "Vluchten.ai toont actuele prijzen via live koppelingen met Skyscanner, Kiwi.com en Booking.com. Prijzen kunnen fluctueren — de definitieve prijs zie je altijd bij de aanbieder zelf.",
+    q: "Verschilt de prijs per dag van de week?",
+    a: "Ja, merkbaar. Vluchten die vertrekken op dinsdag, woensdag of vroeg op zaterdag zijn gemiddeld het goedkoopst. Vrijdagavond en zondagavond zijn traditioneel het duurst. Hetzelfde geldt voor het moment van boeken: ook op dinsdag en woensdag zijn nieuwe prijsdalingen het meest gebruikelijk.",
   },
 ]
 
@@ -63,17 +64,27 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* ── HERO ── */}
-      <section className="bg-[#05428C] pt-8 pb-10 px-4">
+      <section className="bg-[#05428C] pt-10 pb-12 px-4">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-2">
-            Vergelijk en boek goedkope vliegtickets
+          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-3">
+            Slim vliegen begint hier.
           </h1>
-          <p className="text-sm text-white/60 mb-6">
-            Vind de laagste prijs via Skyscanner, Kiwi.com, Booking.com en meer. Gratis.
+          <p className="text-sm text-white/70 mb-7 max-w-xl mx-auto leading-relaxed">
+            Ontdek wanneer je moet boeken, vanwaar je het goedkoopst vertrekt en welke aanbieder nu de laagste prijs heeft. Wij vergelijken — jij boekt.
           </p>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mb-6">
             <SearchWidget />
+          </div>
+
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <Link href="/tips/beste-boekingstijd"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 border border-white/20 text-white text-sm font-medium rounded-lg hover:bg-white/20 transition-colors">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+              </svg>
+              Bekijk reisgidsen
+            </Link>
           </div>
         </div>
       </section>
@@ -81,30 +92,30 @@ export default function Home() {
       {/* ── TRUST STRIP ── */}
       <TrustStrip />
 
-      {/* ── STATS ROW ── */}
+      {/* ── USP ROW ── */}
       <section className="bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-4 py-8 grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-100">
+        <div className="max-w-5xl mx-auto px-4 py-7 grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-100">
           {[
-            { value: "500+", label: "Bestemmingen" },
-            { value: "200+", label: "Maatschappijen" },
-            { value: "€0", label: "Vergelijkingskosten" },
-            { value: "24/7", label: "Beschikbaar" },
+            { value: "100%", label: "Nederlandstalig advies" },
+            { value: "Onafhankelijk", label: "Geen voorkeur voor aanbieder" },
+            { value: "Gratis", label: "Geen verborgen kosten" },
+            { value: "Direct", label: "Altijd bij de officiële aanbieder" },
           ].map((s) => (
             <div key={s.label} className="text-center px-4 py-2">
-              <div className="text-2xl font-bold text-slate-800">{s.value}</div>
-              <div className="text-xs text-slate-400 mt-0.5">{s.label}</div>
+              <div className="text-lg font-bold text-slate-800">{s.value}</div>
+              <div className="text-xs text-slate-400 mt-0.5 leading-snug">{s.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── TRENDING — horizontal scroll ── */}
+      {/* ── POPULAIRE ROUTES ── */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Nu trending</p>
-              <h2 className="text-2xl font-bold text-slate-900">Meest gezochte bestemmingen</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Populaire routes</p>
+              <h2 className="text-2xl font-bold text-slate-900">Wat vliegers nu boeken</h2>
             </div>
             <Link href="/goedkope-vluchten" className="text-sm font-medium text-slate-400 hover:text-slate-700 transition-colors hidden sm:block">
               Alle bestemmingen &rarr;
@@ -124,12 +135,27 @@ export default function Home() {
       {/* ── HOE HET WERKT ── */}
       <section className="bg-[#06428C] py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-white text-center mb-12">Hoe werkt vluchten.ai?</h2>
+          <h2 className="text-2xl font-bold text-white text-center mb-3">Hoe werkt vluchten.ai?</h2>
+          <p className="text-white/55 text-sm text-center mb-12 max-w-lg mx-auto">
+            Wij zijn geen boekingstool. Wij zijn de gids die je helpt de juiste beslissing te nemen — daarna sturen we je door.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { step: 1, title: "Zoek je vlucht", desc: "Vul je vertrekplaats, bestemming en datum in. Wij zoeken direct bij honderden maatschappijen." },
-              { step: 2, title: "Vergelijk de prijzen", desc: "Zie in één overzicht de scherpste prijzen via Skyscanner, Kiwi.com, Booking.com en meer." },
-              { step: 3, title: "Boek direct & veilig", desc: "Klik door naar de aanbieder en boek rechtstreeks. Geen tussenpersoon, geen extra kosten." },
+              {
+                step: 1,
+                title: "Wij geven je advies",
+                desc: "Onze reisgidsen vertellen je wanneer je moet boeken, vanwaar je het goedkoopst vertrekt en welke maatschappij bij jou past.",
+              },
+              {
+                step: 2,
+                title: "Jij vergelijkt de prijzen",
+                desc: "Vul je reisgegevens in en zie direct welke aanbieder — Skyscanner, Kiwi.com of Booking.com — nu de laagste prijs heeft.",
+              },
+              {
+                step: 3,
+                title: "Wij sturen je door",
+                desc: "Je boekt altijd rechtstreeks bij de aanbieder. Wij verdienen een kleine commissie als je boekt — jij betaalt niks extra.",
+              },
             ].map((item) => (
               <div key={item.step} className="text-center">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4">
@@ -148,11 +174,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Vertrek binnen 14 dagen</p>
-              <h2 className="text-2xl font-bold text-slate-900">Last-minute deals</h2>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Prijzen gedaald</p>
+              <h2 className="text-2xl font-bold text-slate-900">Last-minute kansen</h2>
             </div>
             <Link href="/goedkope-vluchten" className="text-sm font-medium text-slate-400 hover:text-slate-700 transition-colors hidden sm:block">
-              Alle deals &rarr;
+              Alle bestemmingen &rarr;
             </Link>
           </div>
 
@@ -184,22 +210,20 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Actuele deals</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Indicatieve richtprijzen</p>
               <h2 className="text-2xl font-bold text-slate-900 capitalize">
-                Vluchten {currentMonth.nameNL} {currentMonth.year}
+                Vliegen in {currentMonth.nameNL} {currentMonth.year}
               </h2>
             </div>
             <Link href={`/goedkope-vluchten/${currentMonth.slug}`} className="text-sm font-medium text-slate-400 hover:text-slate-700 transition-colors hidden sm:block">
-              Alle deals &rarr;
+              Meer deals &rarr;
             </Link>
           </div>
 
-          {/* Tip */}
           <div className="bg-slate-100 border border-slate-200 rounded-lg px-5 py-4 mb-8">
             <p className="text-sm text-slate-600 leading-relaxed">{currentMonth.tip}</p>
           </div>
 
-          {/* Deal cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
             {currentMonth.topDestinations.map((deal, i) => (
               <Link key={deal.slug} href={`/vluchten-naar/${deal.slug}`}
@@ -219,7 +243,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Month pills */}
           <div className="flex flex-wrap gap-2">
             {months.map((m) => (
               <Link key={m.slug} href={`/goedkope-vluchten/${m.slug}`}
@@ -235,12 +258,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── POPULAIRE BESTEMMINGEN ── */}
+      {/* ── ALLE BESTEMMINGEN ── */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Ontdek</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Overzicht</p>
               <h2 className="text-2xl font-bold text-slate-900">Populaire bestemmingen</h2>
             </div>
             <Link href="/goedkope-vluchten" className="text-sm font-medium text-slate-400 hover:text-slate-700 transition-colors hidden sm:block">
@@ -284,16 +307,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TIPS & BLOG ── */}
+      {/* ── REISGIDSEN ── */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Kennisbank</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Onafhankelijk advies</p>
               <h2 className="text-2xl font-bold text-slate-900">Reisgidsen &amp; tips</h2>
             </div>
             <Link href="/tips" className="text-sm font-medium text-slate-400 hover:text-slate-700 transition-colors hidden sm:block">
-              Alle tips &rarr;
+              Alle reisgidsen &rarr;
             </Link>
           </div>
 
@@ -327,19 +350,22 @@ export default function Home() {
       <section className="py-16 px-4 bg-slate-50 border-t border-slate-200">
         <div className="max-w-6xl mx-auto">
           <div className="mb-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">Vertrouwd door duizenden reizigers</p>
-            <h2 className="text-2xl font-bold text-slate-900">Waarom vluchten.ai?</h2>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">Waarom vluchten.ai?</p>
+            <h2 className="text-2xl font-bold text-slate-900">Een eerlijke reisgids, geen verkooptool</h2>
+            <p className="text-sm text-slate-500 mt-2 max-w-lg mx-auto">
+              Wij verdienen alleen iets als jij tevreden boekt. Dat houdt ons scherp.
+            </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                   </svg>
                 ),
-                title: "100% gratis",
-                desc: "Vergelijken kost nooit iets. Je betaalt alleen de prijs van je ticket.",
+                title: "100% Nederlandstalig",
+                desc: "Advies in je eigen taal, geschreven voor reizigers vanuit Nederland.",
               },
               {
                 icon: (
@@ -347,8 +373,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                   </svg>
                 ),
-                title: "200+ maatschappijen",
-                desc: "We doorzoeken honderden luchtvaartmaatschappijen in seconden.",
+                title: "Onafhankelijk",
+                desc: "Wij hebben geen voorkeur voor Skyscanner, Kiwi of Booking. Wij sturen je naar de goedkoopste.",
               },
               {
                 icon: (
@@ -356,17 +382,17 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                   </svg>
                 ),
-                title: "Veilig boeken",
-                desc: "Je boekt altijd direct bij erkende partners. Geen tussenpersoon.",
+                title: "Direct bij de aanbieder",
+                desc: "Je boekt altijd op de officiële site van Skyscanner, Kiwi of Booking. Nooit via een tussenpersoon.",
               },
               {
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ),
-                title: "Geen verborgen kosten",
-                desc: "De prijs die je ziet is de prijs die je betaalt. Geen verrassingen.",
+                title: "Gratis voor jou",
+                desc: "Wij verdienen een kleine commissie van de aanbieder als je boekt. Jij betaalt nooit meer dan normaal.",
               },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-lg border border-slate-200 p-6">
@@ -386,7 +412,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto">
           <div className="mb-10 text-center">
             <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">Veelgestelde vragen</p>
-            <h2 className="text-2xl font-bold text-slate-900">Alles over goedkoop vliegen</h2>
+            <h2 className="text-2xl font-bold text-slate-900">Slimmer vliegen in het kort</h2>
           </div>
           <div className="divide-y divide-slate-100">
             {faqItems.map((item, i) => (
@@ -400,14 +426,14 @@ export default function Home() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="bg-slate-50 py-24 px-4 border-t border-slate-200">
+      <section className="bg-slate-50 py-20 px-4 border-t border-slate-200">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">Klaar om te boeken?</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">Klaar om slimmer te vliegen?</p>
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Vind jouw goedkoopste vlucht.
+            Vind de laagste prijs. Gratis, altijd.
           </h2>
           <p className="text-slate-500 mb-10 text-base">
-            Gemiddeld &euro;47 bespaard per persoon. Gratis. Altijd.
+            Wij vergelijken Skyscanner, Kiwi.com en Booking.com zodat jij weet waar je het goedkoopst boekt.
           </p>
           <ScrollTopButton />
         </div>

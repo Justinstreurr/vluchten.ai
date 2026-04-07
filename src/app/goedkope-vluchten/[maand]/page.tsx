@@ -64,9 +64,9 @@ export default async function MonthPage({ params }: Props) {
 
         {/* Top deals */}
         <div className="mb-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Hot deals</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Richtprijzen</p>
           <h2 className="text-2xl font-bold text-slate-900">
-            Top bestemmingen {month.nameNL} {month.year}
+            Populaire routes in {month.nameNL} {month.year}
           </h2>
         </div>
 

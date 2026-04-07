@@ -27,10 +27,19 @@ const NAV = [
   },
   {
     href: "/tips",
-    label: "Tips",
+    label: "Reisgidsen",
     icon: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+    ),
+  },
+  {
+    href: "/tips/beste-boekingstijd",
+    label: "Wanneer boeken",
+    icon: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
       </svg>
     ),
   },
@@ -39,7 +48,7 @@ const NAV = [
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center gap-8">
+      <div className="max-w-6xl mx-auto px-4 h-14 flex items-center gap-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-lg text-slate-900 shrink-0">
           <Image src="/icon-plane.png" alt="" width={28} height={28} className="w-7 h-7 object-contain" style={{filter:"brightness(0) saturate(100%) invert(32%) sepia(90%) saturate(1200%) hue-rotate(200deg) brightness(95%) contrast(100%)"}} />
@@ -47,22 +56,17 @@ export default function Header() {
         </Link>
 
         {/* Nav */}
-        <nav className="hidden md:flex items-center gap-0.5 flex-1">
+        <nav className="hidden lg:flex items-center gap-0.5 flex-1">
           {NAV.map((item) => (
             <Link key={item.href} href={item.href}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-colors">
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded text-sm font-medium text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-colors">
               {item.icon}
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-4 shrink-0">
-          <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-400">
-            <span className="font-medium">Trustpilot</span>
-            <span className="font-semibold text-slate-600">4,7&thinsp;/&thinsp;5</span>
-          </div>
-
+        <div className="ml-auto flex items-center gap-3 shrink-0">
           <Link href="/goedkope-vluchten"
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#05428C] text-white text-sm font-semibold hover:bg-[#03306B] transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

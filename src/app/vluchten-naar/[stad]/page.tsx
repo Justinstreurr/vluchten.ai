@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dest = getDestination(stad)
   if (!dest) return {}
 
-  const title = `Vluchten naar ${dest.city} — Goedkope tickets v.a. €${dest.avgPrice}`
-  const description = `Vergelijk vluchten naar ${dest.city}, ${dest.country}. Vind de goedkoopste tickets v.a. €${dest.avgPrice} via Skyscanner, Kiwi.com en meer.`
+  const title = `Goedkoop naar ${dest.city} vliegen — wanneer boek je het slimst?`
+  const description = `Alles wat je moet weten over vluchten naar ${dest.city}: wanneer boeken, vanwaar vertrekken en welke aanbieder nu het goedkoopst is. Richtprijs v.a. €${dest.avgPrice}.`
 
   return {
     title,
@@ -96,7 +96,7 @@ export default async function DestinationPage({ params }: Props) {
 
         <div className="relative max-w-6xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold drop-shadow mb-2">
-            Vluchten naar {dest.city}
+            Goedkoop naar {dest.city} vliegen
           </h1>
           <p className="text-white/60 mt-1 mb-4">{dest.country} &middot; {dest.iata}</p>
           <p className="text-white/70 mb-6 max-w-2xl text-base">{dest.description}</p>
@@ -127,9 +127,39 @@ export default async function DestinationPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main content */}
           <div className="lg:col-span-2 space-y-6">
+
+            {/* Slim boeken blok */}
+            <div className="bg-[#05428C]/5 border border-[#05428C]/15 rounded-xl p-6">
+              <h2 className="font-bold text-slate-900 text-lg mb-4">
+                Wanneer boek je het goedkoopst naar {dest.city}?
+              </h2>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Beste maanden</div>
+                  <div className="text-sm text-slate-700 capitalize">{dest.bestMonths.join(", ")}</div>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Beste vliegdag</div>
+                  <div className="text-sm text-slate-700">Dinsdag of woensdag — gemiddeld €30–50 goedkoper</div>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Hoe ver vooruit boeken</div>
+                  <div className="text-sm text-slate-700">
+                    {dest.flightTimeHours >= 6 ? "2–4 maanden van tevoren" : "4–8 weken van tevoren"}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Vliegtijd vanuit AMS</div>
+                  <div className="text-sm text-slate-700">
+                    {dest.flightTimeHours}u{dest.flightTimeMin > 0 ? ` ${dest.flightTimeMin}m` : ""} — {dest.flightTimeHours < 3 ? "directe vluchten beschikbaar" : dest.flightTimeHours < 6 ? "vaak directe verbinding" : "vrijwel altijd met tussenstop"}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Search */}
             <div>
-              <h2 className="text-xl font-bold text-slate-900 mb-4">Zoek vluchten naar {dest.city}</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-4">Vergelijk vluchten naar {dest.city}</h2>
               <SearchWidget defaultDestination={dest.city} defaultDestinationCode={dest.iata} compact />
             </div>
 

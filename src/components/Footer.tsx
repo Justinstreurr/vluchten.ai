@@ -161,10 +161,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-5 flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap gap-5 text-xs text-blue-200">
-            <span>Gratis vergelijken</span>
-            <span>Geen verborgen kosten</span>
-            <span>Veilig boeken via erkende partners</span>
-            <span>Trustpilot 4,7/5</span>
+            <span>100% Nederlandstalig advies</span>
+            <span>Onafhankelijk</span>
+            <span>Gratis, geen verborgen kosten</span>
+            <span>Direct bij de officiële aanbieder</span>
           </div>
           <div className="flex gap-4 text-xs text-blue-300">
             <a href="#" className="hover:text-white transition-colors">Privacybeleid</a>
@@ -178,9 +178,10 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <p className="text-xs text-blue-300 text-center leading-relaxed">
-            &copy; 2026 vluchten.ai &mdash; Vluchten.ai is een vergelijkingswebsite, geen boekingsplatform.
-            Bij het klikken op een aanbieder word je doorgestuurd naar een externe partij (Skyscanner, Kiwi.com of Booking.com).
-            Vluchten.ai ontvangt mogelijk een affiliatecommissie bij een boeking. Prijzen zijn indicatief en kunnen variëren.
+            &copy; 2026 vluchten.ai &mdash; Vluchten.ai is een onafhankelijke Nederlandstalige reisgids, geen boekingsplatform.
+            Wij vergelijken aanbieders en sturen je door naar de officiële website van Skyscanner, Kiwi.com of Booking.com.{" "}
+            <strong className="text-blue-200">Vluchten.ai verdient een commissie wanneer je via onze links boekt. Dit kost jou niets extra en beïnvloedt onze onafhankelijke adviezen niet.</strong>{" "}
+            Getoonde prijzen zijn indicatief en kunnen afwijken van de actuele prijs bij de aanbieder.
           </p>
         </div>
       </div>

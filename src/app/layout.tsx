@@ -9,12 +9,12 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-geist" })
 export const metadata: Metadata = {
   metadataBase: new URL("https://vluchten.ai"),
   title: {
-    default: "Vluchten.ai — Vergelijk goedkope vluchten",
-    template: "%s | Vluchten.ai",
+    default: "Vluchten.ai — Slim vliegen begint hier",
+    template: "%s | Vluchten.ai — Slim vliegen begint hier",
   },
   description:
-    "Vind de goedkoopste vluchten via vluchten.ai. Vergelijk honderden luchtvaartmaatschappijen en boek direct via Skyscanner, Kiwi.com of Booking.com.",
-  keywords: ["goedkope vluchten", "vliegtickets vergelijken", "vluchten zoeken", "goedkoop vliegen"],
+    "Ontdek wanneer je moet boeken, vanwaar je het goedkoopst vertrekt en welke aanbieder nu de laagste prijs heeft. Nederlandstalige reisgids voor slimme vliegers. 100% gratis.",
+  keywords: ["goedkope vluchten", "wanneer boeken vlucht", "vliegtickets vergelijken", "goedkoop vliegen tips"],
   openGraph: { type: "website", locale: "nl_NL", siteName: "Vluchten.ai" },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },

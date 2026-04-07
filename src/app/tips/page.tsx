@@ -3,9 +3,9 @@ import Link from "next/link"
 import { tips } from "@/data/tips"
 
 export const metadata: Metadata = {
-  title: "Reisgidsen & Tips — Goedkoop vliegen en handbagage regels",
+  title: "Reisgidsen — Wanneer boeken, vanwaar vliegen en hoe besparen",
   description:
-    "Praktische tips om goedkoper te vliegen, handbagage regels per maatschappij en informatie over de beste boekingstijd.",
+    "Onze reisgidsen helpen je slim beslissen: wanneer boek je, vanwaar vlieg je het goedkoopst en welke maatschappij past bij jou? Geen reclame, wel eerlijk advies.",
 }
 
 export default function TipsPage() {
@@ -13,9 +13,9 @@ export default function TipsPage() {
     <>
       <section className="bg-[#05428C] pt-8 pb-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-2">Reisgidsen &amp; Tips</h1>
-          <p className="text-sm text-white/60">
-            Alles wat je moet weten om slim en goedkoop te vliegen.
+          <h1 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-2">Reisgidsen</h1>
+          <p className="text-sm text-white/65 max-w-lg mx-auto leading-relaxed">
+            Onze reisgidsen helpen je slim beslissen: wanneer boek je, vanwaar vlieg je het goedkoopst en welke maatschappij past bij jou? Geen reclame, wel eerlijk advies.
           </p>
         </div>
       </section>
