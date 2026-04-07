@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!region) return {}
   return {
     title: `Goedkope vluchten naar ${region.name} — Vergelijk tickets`,
-    description: `Vind de goedkoopste vluchten naar ${region.name}. Vergelijk honderden maatschappijen en boek direct bij de aanbieder.`,
+    description: `Vind de goedkoopste vluchten naar ${region.name}. Vergelijk via Skyscanner, Kiwi.com en Booking.com en boek direct bij de aanbieder.`,
   }
 }
 

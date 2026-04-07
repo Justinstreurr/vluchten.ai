@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     q: "Wanneer is het goedkoopst om een vlucht te boeken?",
-    a: "Voor Europese bestemmingen boek je het beste 4–8 weken van tevoren. Voor intercontinentale vluchten is 2–4 maanden vooruit ideaal. Vlieg je op dinsdag of woensdag? Dan betaal je gemiddeld €30–50 minder dan in het weekend.",
+    a: "Voor Europese bestemmingen boek je het beste 4–8 weken van tevoren. Voor intercontinentale vluchten is 2–4 maanden vooruit ideaal. Vlieg je op dinsdag of woensdag? Dan zijn tarieven doorgaans lager dan in het weekend — hoeveel je bespaart hangt sterk af van de route.",
   },
   {
     q: "Is vluchten.ai gratis?",
@@ -34,7 +34,7 @@ const faqItems = [
   },
   {
     q: "Hoe weet ik of ik een goede prijs heb?",
-    a: "Vergelijk altijd minimaal drie aanbieders. Een goede vuistregel: als de prijs meer dan 20% lager is dan het gemiddelde van de afgelopen weken, is het een echte deal. Onze reisgidsen per bestemming geven je een richtprijs per maand.",
+    a: "Vergelijk altijd minimaal drie aanbieders. Onze reisgidsen per bestemming geven je een richtprijs per maand, zodat je weet of een aanbieding reëel is. Twijfel je? Bekijk de prijs op meerdere dagen — prijzen fluctueren regelmatig.",
   },
   {
     q: "Verschilt de prijs per dag van de week?",
@@ -191,13 +191,11 @@ export default function Home() {
                   <div className="text-xs text-slate-400 mt-0.5">{d.country} &middot; {d.flightTimeHours}u{d.flightTimeMin > 0 ? `${d.flightTimeMin}m` : ""} vliegen</div>
                 </div>
                 <div className="text-right shrink-0 ml-4">
-                  {d.priceTrend < 0 && (
-                    <div className="text-[10px] font-semibold text-[#F58A07] border border-[#F58A07]/30 bg-[#F58A07]/8 px-1.5 py-0.5 rounded mb-1 inline-block">
-                      {Math.abs(d.priceTrend)}% goedkoper
-                    </div>
-                  )}
-                  <div className="text-xl font-bold text-slate-900">&euro;{d.avgPrice}</div>
-                  <div className="text-[11px] text-slate-400">per persoon</div>
+                  <div className="text-[10px] font-semibold text-[#F58A07] border border-[#F58A07]/30 bg-[#F58A07]/8 px-1.5 py-0.5 rounded mb-1 inline-block">
+                    Deal
+                  </div>
+                  <div className="text-xl font-bold text-slate-900">~&euro;{d.avgPrice}</div>
+                  <div className="text-[11px] text-slate-400">indicatieprijs</div>
                 </div>
               </Link>
             ))}
@@ -422,6 +420,9 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <p className="text-xs text-slate-400 mt-8 text-center leading-relaxed">
+            Boektips zijn gebaseerd op algemene vliegprijspatronen en gelden niet voor elke route of periode. Actuele prijzen kunnen sterk afwijken.
+          </p>
         </div>
       </section>
 

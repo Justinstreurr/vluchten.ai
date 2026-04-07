@@ -7,8 +7,6 @@ interface Props {
 }
 
 export default function DestinationCard({ destination: d }: Props) {
-  const trendDown = d.priceTrend < 0
-  const trendAbs = Math.abs(d.priceTrend)
 
   return (
     <Link href={`/vluchten-naar/${d.slug}`}
@@ -39,12 +37,10 @@ export default function DestinationCard({ destination: d }: Props) {
           )}
         </div>
 
-        {/* Price trend */}
-        {d.priceTrend !== 0 && (
-          <span className={`absolute top-3 right-3 text-[10px] font-semibold px-2 py-0.5 rounded ${
-            trendDown ? "bg-emerald-500 text-white" : "bg-orange-100 text-orange-700"
-          }`}>
-            {trendDown ? `-${trendAbs}%` : `+${trendAbs}%`}
+        {/* Deal badge */}
+        {d.deal && !d.trending && (
+          <span className="absolute top-3 right-3 text-[10px] font-semibold bg-[#F58A07] text-white px-2 py-0.5 rounded tracking-wide">
+            Deal
           </span>
         )}
 
@@ -61,8 +57,9 @@ export default function DestinationCard({ destination: d }: Props) {
           {d.flightTimeHours}u{d.flightTimeMin > 0 ? `\u202F${d.flightTimeMin}m` : ""} vlucht
         </div>
         <div>
-          <span className="text-[10px] text-slate-400">v.a. </span>
+          <span className="text-[10px] text-slate-400">~</span>
           <span className="font-bold text-slate-900">&euro;{d.avgPrice}</span>
+          <span className="text-[10px] text-slate-400">*</span>
         </div>
       </div>
     </Link>

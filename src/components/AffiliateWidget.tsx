@@ -31,12 +31,12 @@ export default function AffiliateWidget({
     {
       name: "Skyscanner",
       logo: "/logo-skyscanner-icon.png",
-      tagline: "Vergelijk honderden maatschappijen",
+      tagline: "Vergelijk vluchten van tientallen maatschappijen",
       badge: "Meest populair",
       badgeColor: "bg-[#F58A07]/10 text-[#F58A07] border border-[#F58A07]/25",
       url: skyscannerUrl(originIata, destinationIata),
-      priceNote: avgPrice ? `v.a. €${avgPrice}` : "Bekijk prijzen",
-      cta: "Bekijk vluchten →",
+      priceNote: avgPrice ? `Richtprijs ~€${avgPrice}` : "Bekijk actuele prijzen",
+      cta: "Bekijk actuele prijzen →",
       highlight: true,
     },
     {
@@ -46,8 +46,8 @@ export default function AffiliateWidget({
       badge: "Beste deals",
       badgeColor: "bg-blue-100 text-blue-700",
       url: kiwiUrl(originIata, destinationIata),
-      priceNote: avgPrice ? `v.a. €${Math.round(avgPrice * 0.95)}` : "Bekijk prijzen",
-      cta: "Bekijk vluchten →",
+      priceNote: "Bekijk actuele prijzen",
+      cta: "Bekijk actuele prijzen →",
       highlight: false,
     },
     {
@@ -57,7 +57,7 @@ export default function AffiliateWidget({
       badge: "Pakketdeals",
       badgeColor: "bg-blue-100 text-[#03306B]",
       url: bookingUrl(destinationIata),
-      priceNote: "Combineer en bespaar",
+      priceNote: "Vluchten + hotel combineren",
       cta: "Bekijk vluchten →",
       highlight: false,
     },
@@ -102,8 +102,8 @@ export default function AffiliateWidget({
 
             <div className="flex items-center gap-4 shrink-0">
               <div className="text-right hidden sm:block">
-                <div className="font-extrabold text-[#03306B] text-lg">{p.priceNote}</div>
-                <div className="text-xs text-slate-400">per persoon</div>
+                <div className="font-semibold text-slate-700 text-sm">{p.priceNote}</div>
+                <div className="text-xs text-slate-400">actuele prijs bij aanbieder</div>
               </div>
               <span className="text-[#05428C] font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">
                 {p.cta}
@@ -115,7 +115,8 @@ export default function AffiliateWidget({
 
       <div className="px-6 py-3 bg-slate-50 border-t border-slate-100">
         <p className="text-xs text-slate-400">
-          * Vluchten.ai ontvangt mogelijk een commissie bij boeking via bovenstaande links. Dit heeft geen invloed op de prijs die je betaalt.
+          Getoonde richtprijzen zijn indicatief en gebaseerd op recente zoekopdrachten — actuele prijs zie je bij de aanbieder.
+          Vluchten.ai verdient een commissie wanneer je via bovenstaande links boekt. Dit kost jou niets extra.
         </p>
       </div>
     </div>

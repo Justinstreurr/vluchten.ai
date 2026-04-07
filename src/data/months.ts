@@ -119,7 +119,7 @@ export const months: MonthDeal[] = [
     nameNL: "september",
     year: 2026,
     description: "September is de absolute favoriete maand van ervaren reizigers: nog warm genoeg, stukken goedkoper en veel minder druk.",
-    tip: "September is de beste maand — vliegprijzen dalen gemiddeld 25% ten opzichte van augustus.",
+    tip: "September is de beste maand — vliegprijzen zijn vaak aanzienlijk lager dan in augustus.",
     topDestinations: [
       { slug: "barcelona", city: "Barcelona", price: 79, emoji: "🇪🇸" },
       { slug: "rome", city: "Rome", price: 89, emoji: "🇮🇹" },
