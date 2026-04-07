@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import DateRangePicker from "./DateRangePicker"
 import DropdownPortal from "./DropdownPortal"
@@ -66,19 +66,23 @@ export default function SearchWidget({
   defaultDestinationCode = "",
   compact = false,
 }: SearchWidgetProps) {
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-
-  const inTwoWeeks = new Date(today)
-  inTwoWeeks.setDate(today.getDate() + 14)
-  const inThreeWeeks = new Date(today)
-  inThreeWeeks.setDate(today.getDate() + 21)
-
   const [tripType, setTripType] = useState<"retour" | "enkel">("retour")
   const [origin, setOrigin] = useState(defaultOrigin)
   const [destination, setDestination] = useState(defaultDestination)
-  const [departDate, setDepartDate] = useState(fmt(inTwoWeeks))
-  const [returnDate, setReturnDate] = useState(fmt(inThreeWeeks))
+  const [departDate, setDepartDate] = useState("")
+  const [returnDate, setReturnDate] = useState("")
+
+  // Initialize dates client-side only to avoid SSR/client locale mismatch (hydration error #418)
+  useEffect(() => {
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+    const inTwoWeeks = new Date(today)
+    inTwoWeeks.setDate(today.getDate() + 14)
+    const inThreeWeeks = new Date(today)
+    inThreeWeeks.setDate(today.getDate() + 21)
+    setDepartDate(fmt(inTwoWeeks))
+    setReturnDate(fmt(inThreeWeeks))
+  }, [])
   const [adults, setAdults] = useState(1)
   const [directOnly, setDirectOnly] = useState(false)
   const [originCode, setOriginCode] = useState("AMS")

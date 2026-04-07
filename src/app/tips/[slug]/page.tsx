@@ -60,7 +60,7 @@ export default async function TipPage({ params }: Props) {
           <h1 className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-3">{tip.title}</h1>
           <p className="text-white/60 text-sm">{tip.description}</p>
           <div className="flex items-center gap-4 mt-4 text-xs text-white/40">
-            <span>{new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
+            <span suppressHydrationWarning>{new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
             <span>&middot;</span>
             <span>{tip.readTime} min lezen</span>
           </div>

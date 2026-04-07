@@ -36,7 +36,7 @@ export default function TipsPage() {
               </h2>
               <p className="text-sm text-slate-500 leading-relaxed line-clamp-3">{tip.description}</p>
               <div className="flex items-center gap-3 mt-4 text-xs text-slate-400">
-                <span>{new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
+                <span suppressHydrationWarning>{new Date(tip.date).toLocaleDateString("nl-NL", { dateStyle: "long" })}</span>
                 <span>&middot;</span>
                 <span>{tip.readTime} min lezen</span>
               </div>
